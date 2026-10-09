@@ -5,17 +5,15 @@ import Slot from "./components/Slot";
 import { IMAGES } from "./image.js";
 import { Fragment, useEffect, useState } from "react";
 import MaskIcon from "./components/MaskIcon";
-import { FINGER_LINES, lineStyle, iconStyle, markStyle } from "./fingerLines";
+import { FINGER_LINES, lineStyle, iconStyle } from "./fingerLines";
 import minipoint from "./assets/minipoint.svg";
 
 
 export default function App() {
   const theme = useRandomTheme();
-  // 지금 눌려 있는 아이콘 (없으면 null)
   const [activeId, setActiveId] = useState(null);
   const active = FINGER_LINES.find((item) => item.id === activeId);
 
-  // 아이콘이 아닌 곳을 누르면 선택 해제
   useEffect(() => {
     if (!activeId) return;
     const onClick = (e) => {
@@ -70,14 +68,6 @@ export default function App() {
             </div>
             <div className="hero__finger-wrap">
               <Slot src={theme?.fingerprint} alt="지문 일러스트" className="hero__fingerprint" />
-                {theme?.fingerprint && active && (
-                  <MaskIcon
-                    key={active.id}
-                    src={active.icon}
-                    className="hero__mark"
-                    style={markStyle(active)}
-                  />
-                )}
               {theme?.fingerprint &&
                 FINGER_LINES.map((item) => (
                   <Fragment key={item.id}>

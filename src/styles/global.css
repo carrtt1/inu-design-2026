@@ -223,10 +223,10 @@ a {
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
-  gap: clamp(32px, 12vw, 160px);
-  max-width: 1240px;
+  gap: 24px;
+  max-width: 1340px;
   margin: 0 auto;
   padding: 56px var(--gutter) 72px;
 }
@@ -292,6 +292,7 @@ a {
 
 .hero__finger-wrap {
   position: relative;
+  margin: 0 11% 0 19%;
 }
 
 .hero__line {
@@ -354,9 +355,9 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 14px;
+  gap: clamp(6px, 1vw, 14px);
   height: 100%;
-  padding: 20px 24px;
+  padding: clamp(10px, 1.6vw, 20px) clamp(12px, 2vw, 24px);
   animation: hero-info-in 0.25s ease;
 }
 
@@ -367,13 +368,13 @@ a {
 }
 
 .hero__info-title {
-  font-size: 30px;
+  font-size: clamp(18px, 2.3vw, 30px);
   font-weight: 800;
   line-height: 1;
 }
 
 .hero__info-text {
-  font-size: 15px;
+  font-size: clamp(12px, 1.15vw, 15px);
   line-height: 1.5;
 }
 
