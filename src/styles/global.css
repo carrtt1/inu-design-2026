@@ -603,26 +603,6 @@ dd {
   top: 45%;
 }
 
-a.design-nav__item,
-.design-nav__logo {
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-}
-
-a.design-nav__item:hover,
-a.design-nav__item:active,
-a.design-nav__item:focus-visible,
-.design-nav__logo:hover,
-.design-nav__logo:active,
-.design-nav__logo:focus-visible {
-  opacity: 1;
-}
-
-a.design-nav__item:hover .design-nav__icon,
-a.design-nav__item:active .design-nav__icon {
-  transform: rotate(45deg);
-}
-
 .design-grid__end {
   grid-column: 1 / -1;
   display: grid;
@@ -649,7 +629,6 @@ a.design-nav__item:active .design-nav__icon {
   width: 5cqw;
   height: auto;
   margin-bottom: 2.6cqw;
-  transition: transform 0.3s ease;
 }
 
 .design-nav__ko {
@@ -665,10 +644,6 @@ a.design-nav__item:active .design-nav__icon {
   letter-spacing: 0.02em;
 }
 
-a.design-nav__item:hover .design-nav__icon {
-  transform: rotate(45deg);
-}
-
 .design-nav__logo:hover img {
   transform: scale(1.04);
 }
@@ -676,6 +651,19 @@ a.design-nav__item:hover .design-nav__icon {
 .design-nav a:focus-visible {
   outline: 2px solid var(--color-white);
   outline-offset: 6px;
+}
+
+.design-nav__item--current .design-nav__icon {
+  transform: rotate(45deg);
+}
+
+.design-card:not(.design-card--empty) img {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.design-card:not(.design-card--empty) img:hover {
+  opacity: 1;
 }
 
 /* ---------- 디자인 페이지 색 띠 ---------- */

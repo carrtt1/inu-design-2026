@@ -44,6 +44,7 @@ export default function DesignPage() {
         <nav className="design-nav" aria-label="디자인 전공">
           <div className="design-nav__stage">
             <Link
+              key={`current-${current.id}`}
               to={`/design/${current.id}`}
               reloadDocument
               className={`design-nav__item design-nav__item--current design-nav__item--${current.id}`}

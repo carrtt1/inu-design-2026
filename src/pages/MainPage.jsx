@@ -13,10 +13,26 @@ import { useLocation } from "react-router-dom";
 export default function MainPage({ theme }) {
   const [activeId, setActiveId] = useState(null);
 
-  const { hash } = useLocation();
+  const { hash, key } = useLocation();
   useEffect(() => {
-    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
-  }, [hash]);
+    if (!hash) return;
+    const id = decodeURIComponent(hash.slice(1));
+    const go = () =>
+      document.getElementById(id)?.scrollIntoView({ behavior: "instant", block: "start" });
+
+    go();
+    const timers = [100, 300, 700, 1200].map((t) => setTimeout(go, t));
+
+    const stop = () => timers.forEach(clearTimeout);
+    window.addEventListener("wheel", stop, { once: true, passive: true });
+    window.addEventListener("touchstart", stop, { once: true, passive: true });
+
+    return () => {
+      stop();
+      window.removeEventListener("wheel", stop);
+      window.removeEventListener("touchstart", stop);
+    };
+  }, [hash, key]);
 
   const active = FINGER_LINES.find((item) => item.id === activeId);
 
