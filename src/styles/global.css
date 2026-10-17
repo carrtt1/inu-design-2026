@@ -1021,3 +1021,249 @@ a.design-nav__item:hover .design-nav__icon {
     animation: none;
   }
 }
+
+/* ---------- 디자이너 페이지 ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.designers-page {
+  background: #000;
+}
+
+.designers {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px var(--gutter) 80px;
+}
+
+.designers__search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.designers__dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--color-point);
+  border-radius: 50%;
+}
+
+.designers__dot--fill {
+  background: var(--color-point);
+}
+
+.designers__field {
+  width: min(100%, 320px);
+  margin: 0 20px;
+}
+
+.designers__field input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 0;
+  background: var(--color-point);
+  color: var(--bg-secondary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.designers__field input::placeholder {
+  color: var(--bg-secondary);
+  opacity: 1;
+}
+
+.designers__field input:focus::placeholder {
+  color: transparent;
+}
+
+.designers__field input:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.designers__msg {
+  margin-top: 48px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.designers__grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 18px 4px;
+  margin-top: 40px;
+}
+
+.designer-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #d9d9d9;
+  transition: opacity 0.2s ease;
+}
+
+.designer-card__empty {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #d9d9d9;
+  transition: opacity 0.2s ease;
+}
+
+.designer-card img:hover,
+.designer-card__empty:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+  .designers {
+    padding: 28px 12px 56px;
+  }
+  .designers__search {
+    gap: 6px;
+  }
+  .designers__dot {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+  }
+  .designers__field {
+    flex: 1;
+    margin: 0 6px;
+  }
+  .designers__field input {
+    height: 36px;
+    font-size: 12px;
+  }
+  .designers__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 3px;
+    margin-top: 28px;
+  }
+}
+
+/* ---------- 디자이너 상세 ---------- */
+.profile {
+  position: relative;
+  padding: 40px var(--gutter) 80px;
+}
+
+.profile__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 830px;
+  margin: 56px auto 0;
+}
+
+.profile__visual {
+  position: relative;
+  flex: none;
+  width: min(62%, 513px);
+}
+
+.profile__finger {
+  display: block;
+  width: 69%;
+  height: auto;
+}
+
+.profile__photo {
+  position: absolute;
+  left: 36%;
+  top: 16%;
+  width: 64%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #d9d9d9;
+}
+
+.profile__info {
+  text-align: right;
+}
+
+.profile__name {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.profile__email {
+  display: block;
+  margin-top: 40px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.profile__links {
+  display: grid;
+  gap: 4px;
+  margin-top: 36px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile__email:hover,
+.profile__links a:hover {
+  text-decoration: underline;
+}
+
+.profile__star {
+  position: absolute;
+  right: 0;
+  top: 55%;
+  width: clamp(48px, 8.4vw, 121px);
+  aspect-ratio: 108 / 187;
+  color: var(--tab-color);
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+}
+
+.profile__star:hover {
+  opacity: 0.7;
+}
+
+.profile__star:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .profile {
+    padding: 28px 16px 56px;
+  }
+  .profile__body {
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 32px;
+  }
+  .profile__visual {
+    width: 100%;
+    max-width: 360px;
+  }
+  .profile__info {
+    text-align: center;
+  }
+  .profile__email {
+    margin-top: 16px;
+  }
+  .profile__links {
+    margin-top: 16px;
+  }
+  .profile__star {
+    top: 40%;
+  }
+}

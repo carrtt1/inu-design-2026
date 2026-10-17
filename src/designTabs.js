@@ -4,6 +4,9 @@ import productIcon from "./assets/productDesign.svg";
 import pinkMain from "./assets/designpgPinkMain.svg";
 import yellowMain from "./assets/designpgYellowMain.svg";
 import greenMain from "./assets/designpgGreenMain.svg";
+import pinkFinger from "./assets/pinkFinger.svg";
+import yellowFinger from "./assets/yellowFinger.svg";
+import greenFinger from "./assets/greenFinger.svg";
 
 export const DESIGN_TABS = [
   {
@@ -15,6 +18,7 @@ export const DESIGN_TABS = [
     color: "#E4007F",
     point: "#5BB6E8",
     barColor: "#5BB6E8",
+    finger: pinkFinger,
   },
   {
     id: "video",
@@ -25,6 +29,7 @@ export const DESIGN_TABS = [
     color: "#F5A825",
     point: "#E4007F",
     barColor: "#E3007F",
+    finger: yellowFinger,
   },
   {
     id: "product",
@@ -35,5 +40,6 @@ export const DESIGN_TABS = [
     color: "#30A553",
     point: "#EDC056",
     barColor: "#EAAB46",
+    finger: greenFinger,
   },
 ];
