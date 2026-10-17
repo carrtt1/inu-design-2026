@@ -6,6 +6,9 @@ import { DESIGN_TABS } from "../designTabs";
 import { GRAD_LIST, getGradImage } from "../gradImages";
 import { MAJOR_KO, getMockDesigner, withoutEmpty } from "../designerData";
 import starIcon from "../assets/starIcon.svg";
+import infoIcon from "../assets/infoicon.svg";
+import designIcon from "../assets/designicon.svg";
+import minipoint from "../assets/minipoint.svg";
 
 export default function DesignerDetailPage() {
   const params = useParams();
@@ -112,6 +115,22 @@ export default function DesignerDetailPage() {
           <MaskIcon src={starIcon} />
         </Link>
       </main>
+
+      <nav className="profile__more" aria-label="더 보기">
+        <div className="profile__more-links">
+          <Link to="/#about" className="profile__more-link">
+            <MaskIcon src={infoIcon} className="profile__more-icon" />
+            <span>PRESS - 전시 정보</span>
+          </Link>
+          <Link to={`/design/${tab.id}`} className="profile__more-link">
+            <MaskIcon src={designIcon} className="profile__more-icon" />
+            <span>PRESS - 디자인</span>
+          </Link>
+        </div>
+        <Link to="/designer" className="profile__more-star" aria-label="디자이너 목록으로">
+          <MaskIcon src={minipoint} />
+        </Link>
+      </nav>
     </div>
   );
 }

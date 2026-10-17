@@ -1241,29 +1241,76 @@ a.design-nav__item:hover .design-nav__icon {
   outline-offset: 4px;
 }
 
+.profile__more {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .profile {
-    padding: 28px 16px 56px;
+    padding: 28px 0 0;
   }
+  .profile .designers__search {
+    padding: 0 16px;
+  }
+  .profile .designers__field {
+    flex: 0 1 170px;
+  }
+
   .profile__body {
-    flex-direction: column;
-    gap: 28px;
-    margin-top: 32px;
+    flex-direction: row;
+    gap: 12px;
+    margin: 40px 0 0;
+    padding: 0 20px 48px 24px;
   }
   .profile__visual {
-    width: 100%;
-    max-width: 360px;
+    width: 56%;
+    max-width: none;
   }
-  .profile__info {
-    text-align: center;
+  .profile__name {
+    font-size: 13px;
   }
   .profile__email {
-    margin-top: 16px;
+    margin-top: 28px;
+    font-size: 10px;
   }
   .profile__links {
-    margin-top: 16px;
+    gap: 2px;
+    margin-top: 28px;
+    font-size: 10px;
   }
+
   .profile__star {
-    top: 40%;
+    display: none;
+  }
+
+  .profile__more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 340px;
+    padding: 40px 16px 32px;
+    background: var(--tab-color);
+  }
+  .profile__more-links {
+    display: grid;
+    gap: 20px;
+  }
+  .profile__more-link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .profile__more-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--color-point);
+  }
+  .profile__more-star {
+    margin-top: auto;
+    width: 24px;
+    height: 24px;
+    color: var(--color-point);
   }
 }
