@@ -11,9 +11,6 @@ import greenMainLogo from "../assets/greenmainlogo.svg";
 import greenSmallFinger from "../assets/greenSmallFinger.svg";
 import greenMobilePoster from "../assets/greenmobileposter.svg";
 
-// 접속할 때마다 아래 세트 중 하나가 랜덤으로 적용됩니다
-// primary   -> 히어로 / 푸터 배경색
-// secondary -> 상단바 / 메뉴 / 소개 영역 배경색
 export const COLOR_SETS = [
   { name: "set-1", primary: "#000000", secondary: "#E4007F",
     point: "#5BB6E8",

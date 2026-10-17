@@ -435,6 +435,317 @@ a {
   line-height: 1.6;
 }
 
+/* ---------- 축하의 말 ---------- */
+h2,
+dl,
+dd {
+  margin: 0;
+}
+
+.section-rule {
+  margin: 72px 0 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.congrats {
+  padding-top: 40px;
+}
+
+.congrats__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.congrats__point {
+  width: 20px;
+  height: 20px;
+}
+
+.congrats__title {
+  margin-top: 28px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.congrats__arrow {
+  width: 32px;
+  aspect-ratio: 47 / 36;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.congrats__arrow:hover {
+  transform: translateX(4px);
+}
+
+.congrats__arrow:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+.congrats__body {
+  display: grid;
+  gap: 1.3em;
+  margin-top: 56px;
+  font-size: 15px;
+  line-height: 1.6;
+  animation: hero-info-in 0.3s ease;
+}
+
+.congrats__body p {
+  text-indent: 0.7em;
+  white-space: pre-line;
+}
+
+.congrats__sign {
+  margin-top: 1em;
+}
+
+/* ---------- 도움 주신 분들 / 졸업준비위원회 ---------- */
+.credits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.credits__col {
+  padding: 40px 32px 8px 0;
+}
+
+.credits__col + .credits__col {
+  padding-left: 32px;
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.credits__title {
+  margin-bottom: 36px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.credits__list {
+  display: grid;
+  gap: 18px;
+}
+
+.credits__row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.credits__role {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.credits__names {
+  display: grid;
+  gap: 18px;
+  font-size: 13px;
+  white-space: pre;
+}
+
+/* ---------- 디자인 페이지 네비게이션 ---------- */
+.design-page {
+  background: var(--bg-primary);
+}
+
+.design-nav {
+  background: #000;
+}
+
+.design-nav__stage {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  aspect-ratio: 1440 / 515;
+  container-type: inline-size;
+}
+
+.design-nav__item,
+.design-nav__logo {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.design-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.design-nav__item--current {
+  left: 11.3%;
+  top: 30.6%;
+}
+
+.design-nav__logo {
+  left: 36.3%;
+  top: 55%;
+  width: 16.5cqw;
+}
+
+.design-nav__item--lower {
+  left: 62.3%;
+  top: 68.7%;
+}
+
+.design-nav__item--upper {
+  left: 86.8%;
+  top: 45%;
+}
+
+a.design-nav__item,
+.design-nav__logo {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+a.design-nav__item:hover,
+a.design-nav__item:active,
+a.design-nav__item:focus-visible,
+.design-nav__logo:hover,
+.design-nav__logo:active,
+.design-nav__logo:focus-visible {
+  opacity: 1;
+}
+
+a.design-nav__item:hover .design-nav__icon,
+a.design-nav__item:active .design-nav__icon {
+  transform: rotate(45deg);
+}
+
+.design-grid__end {
+  grid-column: 1 / -1;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 15 / 4;
+}
+
+.design-grid__end img {
+  width: 5%;
+}
+
+.design-grid .design-card--mo-only {
+  display: none;
+}
+
+.design-nav__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.25s ease;
+}
+
+.design-nav__icon {
+  width: 5cqw;
+  height: auto;
+  margin-bottom: 2.6cqw;
+  transition: transform 0.3s ease;
+}
+
+.design-nav__ko {
+  font-size: max(11px, 2.2cqw);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.design-nav__en {
+  margin-top: 0.3cqw;
+  font-size: max(7px, 1.1cqw);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+a.design-nav__item:hover .design-nav__icon {
+  transform: rotate(45deg);
+}
+
+.design-nav__logo:hover img {
+  transform: scale(1.04);
+}
+
+.design-nav a:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 6px;
+}
+
+/* ---------- 디자인 페이지 색 띠 ---------- */
+.design-bar {
+  background: var(--tab-color);
+}
+
+.design-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  height: max(44px, 6.6cqw);
+  margin: 0 auto;
+  padding: 0 2.6cqw 0 3cqw;
+  container-type: inline-size;
+}
+
+.design-bar__icons {
+  display: flex;
+  gap: max(4px, 1.1cqw);
+}
+
+.design-bar__icon {
+  width: max(16px, 2.4cqw);
+  height: max(16px, 2.4cqw);
+  color: var(--bar-color);
+}
+
+.design-bar__order {
+  display: flex;
+  align-items: center;
+  gap: max(8px, 2.4cqw);
+  font-size: max(18px, 2.6cqw);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.design-bar__arrow {
+  width: max(18px, 2.5cqw);
+  aspect-ratio: 47 / 36;
+  color: var(--bar-color);
+}
+
+/* ---------- 디자인 페이지 작품 목록 ---------- */
+.design-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: max(4px, 0.7vw); /* 카드 사이 검정 줄 */
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: max(4px, 0.7vw);
+  background: #000;
+}
+
+.design-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.design-card--empty {
+  display: grid;
+  place-items: center;
+}
+
+.design-card--empty img {
+  width: 25%;
+}
+
 /* ---------- 푸터 ---------- */
 .footer {
   background: var(--bg-primary);
@@ -561,6 +872,140 @@ a {
 
   .footer__logos {
     align-self: flex-end;
+  }
+
+    /* 축하의 말 */
+  .section-rule {
+    margin-top: 48px;
+  }
+  .congrats {
+    padding-top: 32px;
+  }
+  .congrats__title {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .congrats__arrow {
+    width: 26px;
+  }
+  .congrats__body {
+    margin-top: 32px;
+    font-size: 13px;
+  }
+
+  .credits {
+    grid-template-columns: 1fr;
+  }
+  .credits__col {
+    padding: 32px 0 48px;
+  }
+  .credits__col + .credits__col {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .credits__title {
+    margin-bottom: 40px;
+    font-size: 15px;
+  }
+  .credits__list {
+    gap: 16px;
+  }
+  .credits__row {
+    grid-template-columns: 72px 1fr;
+    gap: 8px;
+  }
+  .credits__role {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .credits__names {
+    gap: 16px;
+    font-size: 12px;
+    white-space: pre-wrap;
+  }
+  .design-nav__stage {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    aspect-ratio: auto;
+    padding: 16px 12px;
+  }
+  .design-nav__logo {
+    display: none;
+  }
+  .design-nav__item {
+    position: static;
+    transform: none;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    column-gap: 8px;
+  }
+  .design-nav__item--visual { order: 1; }
+  .design-nav__item--video { order: 2; }
+  .design-nav__item--product { order: 3; }
+
+  .design-nav__icon {
+    grid-row: span 2;
+    width: 20px;
+    margin: 0;
+  }
+  .design-nav__ko {
+    font-size: 11px;
+  }
+  .design-nav__en {
+    margin-top: 1px;
+    font-size: 7px;
+  }
+
+  /* 색 띠 */
+  .design-bar__inner {
+    height: 32px;
+    padding: 0 12px;
+  }
+  .design-bar__icons {
+    gap: 4px;
+  }
+  .design-bar__icon {
+    width: 14px;
+    height: 14px;
+  }
+  .design-bar__order {
+    gap: 8px;
+    font-size: 13px;
+  }
+  .design-bar__arrow {
+    width: 14px;
+  }
+  .design-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    padding: 3px;
+  }
+  /* 줄이 딱 맞을 때 아래에 붙는 검정 영역 (가로 전체, 카드 한 줄 높이) */
+  .design-grid__end {
+    grid-column: 1 / -1;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 15 / 4;
+  }
+
+  .design-grid__end img {
+    width: 5%;
+  }
+
+  .design-grid .design-card--mo-only {
+    display: grid;
+  }
+  .design-grid .design-card--pc-only {
+    display: none;
+  }
+  .design-grid__end {
+    aspect-ratio: 3 / 1;
+  }
+  .design-grid__end img {
+    width: 7%;
   }
 }
 

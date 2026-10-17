@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { MENU_ITEMS, SITE_TITLE } from "../content";
-import Slot from "./Slot";
 import { IMAGES } from "../image.js";
 import MaskIcon from "./MaskIcon";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -63,10 +63,10 @@ export default function Header() {
           <ul>
             {MENU_ITEMS.map((item) => (
               <li key={item.label}>
-                <a href={item.href} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)}>
+                <Link to={item.to} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)}>
                   <MaskIcon src={item.icon} className="menu__icon" />
                   <span>{item.label}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

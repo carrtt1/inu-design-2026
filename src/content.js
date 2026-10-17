@@ -5,9 +5,9 @@ import designerIcon from "./assets/designericon.svg";
 export const SITE_TITLE = "2026 인천대학교 디자인학부 졸업전시회";
 
 export const MENU_ITEMS = [
-  { label: "PRESS - 전시 정보", href: "#about", icon: infoIcon },
-  { label: "PRESS - 디자인", href: "#design", icon: designIcon },
-  { label: "PRESS - 디자이너", href: "#designer", icon: designerIcon },
+  { label: "PRESS - 전시 정보", to: "/#about", icon: infoIcon },
+  { label: "PRESS - 디자인", to: "/design/visual", icon: designIcon },
+  { label: "PRESS - 디자이너", to: "/designer", icon: designerIcon },
 ];
 
 export const ABOUT = {
