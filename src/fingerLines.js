@@ -248,3 +248,16 @@ export function markStyle({ mark, iconSize }) {
     aspectRatio: `${iconSize[0]} / ${iconSize[1]}`,
   };
 }
+
+export function hintStyle() {
+  const merge = FINGER_LINES.find((l) => l.id === "merge");
+  const [fw, fh] = FINGER_SIZE;
+  const [iw, ih] = merge.iconSize;
+  const endX = merge.target[0] - merge.circle[0] + merge.start[0];
+  const iconCenterX = endX - ICON_GAP - iw / 2;
+  const iconBottom = merge.target[1] - merge.circle[1] + merge.start[1] + ih / 2;
+  return {
+    left: `${(iconCenterX / fw) * 100}%`,
+    top: `${((iconBottom + 40) / fh) * 100}%`,
+  };
+}

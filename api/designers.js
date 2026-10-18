@@ -12,11 +12,11 @@ export default async function handler(req, res) {
 
   try {
     const rows = await sql`
-      select id, name, email, title, major
+      select id, cover_no, name, email, title, major, description
       from designers
       where (${q} = '' or name ilike ${"%" + q + "%"})
         and (${major} = '' or major = ${major})
-      order by name
+      order by cover_no
     `;
     res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=300");
     res.status(200).json(rows);

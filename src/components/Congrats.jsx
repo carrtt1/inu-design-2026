@@ -20,16 +20,15 @@ export default function Congrats({ pointColor }) {
           </div>
           <button
             type="button"
-            className="congrats__arrow"
+            className="congrats__next"
             style={{ color: pointColor }}
             aria-label="다음 축하의 말 보기"
             onClick={() => setIndex((i) => (i + 1) % CONGRATS.length)}
           >
-            <MaskIcon src={arrow} />
+            <span className="congrats__next-text">다음</span>
+            <MaskIcon src={arrow} className="congrats__arrow" style={{ color: pointColor }} />
           </button>
         </div>
-
-        {/* key 가 바뀌면 글이 다시 그려지면서 살짝 나타난다 */}
         <div className="congrats__body" key={index} aria-live="polite">
           {message.paragraphs.map((p) => (
             <p key={p}>{p}</p>

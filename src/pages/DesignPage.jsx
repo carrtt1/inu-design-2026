@@ -4,6 +4,8 @@ import { DESIGN_TABS } from "../designTabs";
 import MaskIcon from "../components/MaskIcon";
 import arrowIcon from "../assets/thxsparr.svg";
 import { WORKS } from "../designWorks";
+import { useCallback, useEffect, useState } from "react";
+import WorkModal from "../components/WorkModal";
 
 function TabLabel({ tab }) {
   return (
@@ -18,6 +20,22 @@ function TabLabel({ tab }) {
 export default function DesignPage() {
   const { tab: tabId } = useParams();
   const current = DESIGN_TABS.find((t) => t.id === tabId);
+  const [infoByNo, setInfoByNo] = useState({});
+
+  useEffect(() => {
+    fetch("/api/designers")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((rows) =>
+        setInfoByNo(
+          Object.fromEntries(rows.filter((r) => r.cover_no != null).map((r) => [r.cover_no, r]))
+        )
+      )
+      .catch(() => {});
+  }, []);
+
+  const [openWork, setOpenWork] = useState(null);
+  const closeWork = useCallback(() => setOpenWork(null), []);
+  useEffect(() => setOpenWork(null), [tabId]);
 
   if (!current) return <Navigate to="/design/visual" replace />;
 
@@ -86,9 +104,15 @@ export default function DesignPage() {
 
         <section className="design-grid" aria-label={`${current.ko} 작품`}>
           {works.map((work) => (
-            <div className="design-card" key={work.id}>
-              <img src={work.src} alt={`${work.name} 작품`} loading="lazy" />
-            </div>
+            <button
+              type="button"
+              className="design-card design-card--work"
+              key={work.id}
+              onClick={() => setOpenWork(work)}
+              aria-label={`${infoByNo[work.no]?.title ?? work.name} 작품 보기`}
+            >
+              <img src={work.src} alt="" loading="lazy" />
+            </button>
           ))}
           {Array.from({ length: emptyCount }, (_, i) => (
             <div
@@ -117,6 +141,14 @@ export default function DesignPage() {
             </div>
           )}
         </section>
+        {openWork && (
+          <WorkModal
+            work={openWork}
+            info={infoByNo[openWork.no]}
+            tab={current}
+            onClose={closeWork}
+          />
+        )}
       </main>
     </div>
   );

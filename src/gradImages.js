@@ -1,7 +1,10 @@
-const files = import.meta.glob("./assets/gradImg/*.{jpg,jpeg,png,JPG,JPEG,PNG}", {
+const allFiles = import.meta.glob("./assets/gradImg/*.*", {
   eager: true,
   import: "default",
 });
+const files = Object.fromEntries(
+  Object.entries(allFiles).filter(([path]) => /\.(jpe?g|png|webp)$/i.test(path.trim()))
+);
 
 const GRAD_IMAGES = {};
 

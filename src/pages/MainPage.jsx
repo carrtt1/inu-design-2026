@@ -4,10 +4,11 @@ import Slot from "../components/Slot.jsx";
 import { IMAGES } from "../image.js";
 import { Fragment, useEffect, useState } from "react";
 import MaskIcon from "../components/MaskIcon.jsx";
-import { FINGER_LINES, lineStyle, iconStyle } from "../fingerLines.js";
+import { FINGER_LINES, lineStyle, iconStyle, hintStyle } from "../fingerLines.js";
 import minipoint from "../assets/minipoint.svg";
 import Congrats from "../components/Congrats.jsx";
 import { useLocation } from "react-router-dom"; 
+import arrowIcon from "../assets/arrow.svg";
 
 
 export default function MainPage({ theme }) {
@@ -108,6 +109,12 @@ export default function MainPage({ theme }) {
                     </button>
                   </Fragment>
                 ))}
+              {theme?.fingerprint && (
+                <div className="hero__hint" style={hintStyle()}>
+                  <MaskIcon src={arrowIcon} className="hero__hint-arrow" />
+                  <p className="hero__hint-text">지문의 구성 요소를 PRESS !</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -141,6 +148,7 @@ export default function MainPage({ theme }) {
               Incheon National University’s Division of Design Graduation exhibition 2026
             </p>
             <p className="footer__copy">© 2026 INUD. All rights reserved.</p>
+            <p className="footer__sub">e-mail : inudesigngrd@gmail.com</p>
           </div>
           <div className="footer__logos">
             <Slot src={IMAGES.oneulLogo} alt="오늘" className="footer__logo footer__logo--wide" />
