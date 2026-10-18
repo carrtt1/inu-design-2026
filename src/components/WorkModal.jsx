@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import MaskIcon from "./MaskIcon";
 import { IMAGES } from "../image.js";
 import arrowIcon from "../assets/thxsparr.svg";
 import spiral from "../assets/miniarraw.svg";
 import artwork from "../assets/artwork.svg";
 import bstar from "../assets/bstar.svg";
-import { Link } from "react-router-dom";
 import { gradKeyFor } from "../gradImages";
+import { getWorkMedia } from "../workMedia";
 
 export default function WorkModal({ work, info, tab, onClose }) {
   useEffect(() => {
@@ -21,6 +22,42 @@ export default function WorkModal({ work, info, tab, onClose }) {
 
   const title = info?.title ?? "";
   const name = info?.name ?? work.name;
+
+  // 이미지·영상 목록 (DB 이름 → 표지 파일 이름 순으로 시도)
+  const media = useMemo(() => {
+    const a = getWorkMedia(name, work.no);
+    return a.length ? a : getWorkMedia(work.name, work.no);
+  }, [name, work.name, work.no]);
+
+  const [index, setIndex] = useState(0);
+  useEffect(() => setIndex(0), [work.no]);
+
+  const count = media.length;
+  const item = media[index];
+  const go = (step) => setIndex((i) => (i + step + count) % count);
+
+  // 키보드 ← →
+  useEffect(() => {
+    if (count < 2) return;
+    const onKey = (e) => {
+      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "ArrowRight") go(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [count]);
+
+  // 모바일 좌우 스와이프
+  const touchX = useRef(null);
+  const onTouchStart = (e) => {
+    touchX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e) => {
+    if (touchX.current == null || count < 2) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchX.current = null;
+  };
 
   return (
     <div className="work-modal" onClick={onClose}>
@@ -46,7 +83,56 @@ export default function WorkModal({ work, info, tab, onClose }) {
           <img src={tab.icon} alt="" className="work-modal__deco work-modal__deco--small spin-45" />
           <img src={bstar} alt="" className="work-modal__deco work-modal__deco--bstar" />
 
-          <div className="work-modal__image" />
+          <div className="work-modal__media">
+            {count > 1 && (
+              <button
+                type="button"
+                className="work-modal__nav work-modal__nav--prev"
+                onClick={() => go(-1)}
+                aria-label="이전 이미지"
+              >
+                <MaskIcon src={arrowIcon} className="work-modal__nav-icon" />
+              </button>
+            )}
+
+            <div
+              className={`work-modal__image ${item ? "has-media" : ""}`}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
+              {item?.type === "video" && (
+                <video
+                  key={item.src}
+                  src={item.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                />
+              )}
+              {item?.type === "image" && (
+                <img key={item.src} src={item.src} alt={`${title} ${index + 1}`} />
+              )}
+            </div>
+
+            {count > 1 && (
+              <button
+                type="button"
+                className="work-modal__nav work-modal__nav--next"
+                onClick={() => go(1)}
+                aria-label="다음 이미지"
+              >
+                <MaskIcon src={arrowIcon} className="work-modal__nav-icon" />
+              </button>
+            )}
+
+            {count > 1 && (
+              <p className="work-modal__count">
+                {index + 1} / {count}
+              </p>
+            )}
+          </div>
 
           <div className="work-modal__text">
             <div className="work-modal__box">
