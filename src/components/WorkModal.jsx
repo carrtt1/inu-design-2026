@@ -4,6 +4,8 @@ import { IMAGES } from "../image.js";
 import arrowIcon from "../assets/thxsparr.svg";
 import spiral from "../assets/miniarraw.svg";
 import artwork from "../assets/artwork.svg";
+import { Link } from "react-router-dom";
+import { gradKeyFor } from "../gradImages";
 
 export default function WorkModal({ work, info, tab, onClose }) {
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function WorkModal({ work, info, tab, onClose }) {
           <img src={spiral} alt="" className="work-modal__deco work-modal__deco--spiral" />
           <img src={artwork} alt="" className="work-modal__deco work-modal__deco--art" />
           <img src={tab.icon} alt="" className="work-modal__deco work-modal__deco--big" />
-          <img src={tab.icon} alt="" className="work-modal__deco work-modal__deco--small" />
+          <img src={tab.icon} alt="" className="work-modal__deco work-modal__deco--small spin-45" />
 
           <div className="work-modal__image" />
 
@@ -52,7 +54,12 @@ export default function WorkModal({ work, info, tab, onClose }) {
               </p>
             </div>
             <p className="work-modal__title">{title}</p>
-            <p className="work-modal__name">{name}</p>
+            <Link
+              to={`/designer/${encodeURIComponent(gradKeyFor(name, work.no))}`}
+              className="work-modal__name work-modal__name-link"
+            >
+              {name}
+            </Link>
           </div>
         </div>
       </div>

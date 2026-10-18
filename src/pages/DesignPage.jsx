@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import { DESIGN_TABS } from "../designTabs";
 import MaskIcon from "../components/MaskIcon";
@@ -34,12 +34,22 @@ export default function DesignPage() {
   }, []);
 
   const [openWork, setOpenWork] = useState(null);
-  const closeWork = useCallback(() => setOpenWork(null), []);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const workParam = searchParams.get("work");
+
+  const closeWork = useCallback(() => {
+    setOpenWork(null);
+    if (searchParams.has("work")) setSearchParams({}, { replace: true });
+  }, [searchParams, setSearchParams]);
+
   useEffect(() => setOpenWork(null), [tabId]);
+  useEffect(() => {
+    if (!workParam) return;
+    const target = (WORKS[tabId] ?? []).find((w) => w.no === Number(workParam));
+    if (target) setOpenWork(target);
+  }, [workParam, tabId]);
 
   if (!current) return <Navigate to="/design/visual" replace />;
-
-  const [lower, upper] = DESIGN_TABS.filter((t) => t.id !== current.id);
 
   const works = WORKS[current.id] ?? [];
   const emptyPc = (5 - (works.length % 5)) % 5;
@@ -61,29 +71,27 @@ export default function DesignPage() {
       <main>
         <nav className="design-nav" aria-label="디자인 전공">
           <div className="design-nav__stage">
-            <Link
-              key={`current-${current.id}`}
-              to={`/design/${current.id}`}
-              reloadDocument
-              className={`design-nav__item design-nav__item--current design-nav__item--${current.id}`}
-              aria-current="page"
-            >
-              <TabLabel tab={current} />
-            </Link>
+            {DESIGN_TABS.map((t, i) => {
+              const isCurrent = t.id === current.id;
+              return (
+                <Link
+                  key={t.id}
+                  to={`/design/${t.id}`}
+                  reloadDocument={isCurrent}
+                  className={[
+                    "design-nav__item",
+                    `design-nav__item--pos${i + 1}`,
+                    `design-nav__item--${t.id}`,
+                    isCurrent ? "design-nav__item--current" : "",
+                  ].join(" ")}
+                  aria-current={isCurrent ? "page" : undefined}
+                >
+                  <TabLabel tab={t} />
+                </Link>
+              );
+            })}
             <Link to="/" className="design-nav__logo" aria-label="메인 페이지로">
               <img src={current.logo} alt="" />
-            </Link>
-            <Link
-              to={`/design/${lower.id}`}
-              className={`design-nav__item design-nav__item--lower design-nav__item--${lower.id}`}
-            >
-              <TabLabel tab={lower} />
-            </Link>
-            <Link
-              to={`/design/${upper.id}`}
-              className={`design-nav__item design-nav__item--upper design-nav__item--${upper.id}`}
-            >
-              <TabLabel tab={upper} />
             </Link>
           </div>
         </nav>

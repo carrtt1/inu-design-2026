@@ -47,8 +47,8 @@ export default function DesignerPage() {
             {results.map((d) => {
               const info = infoByName[d.name];
               return (
-                <li className="designer-card" key={d.name}>
-                  <Link to={`/designer/${encodeURIComponent(d.name)}`} aria-label={`${d.name} 디자이너 보기`}>
+                <li className="designer-card" key={d.key}>
+                  <Link to={`/designer/${encodeURIComponent(d.key)}`} aria-label={`${d.name} 디자이너 보기`}>
                     {d.src ? (
                       <img
                         src={d.src}
