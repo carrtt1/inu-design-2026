@@ -145,7 +145,7 @@ export default function MainPage({ theme }) {
           <div>
             <p className="footer__title">2026 인천대학교 디자인학부 졸업 전시회</p>
             <p className="footer__sub">
-              Incheon National University’s Division of Design Graduation exhibition 2026
+              Incheon National University Division of Design Graduation exhibition 2026
             </p>
             <p className="footer__copy">© 2026 INUD. All rights reserved.</p>
             <p className="footer__sub">e-mail : inudesigngrd@gmail.com</p>
