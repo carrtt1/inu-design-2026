@@ -1545,7 +1545,7 @@ html.modal-open body {
   .work-modal__box .work-modal__arrow {
     display: block;
     left: auto;
-    right: 4%;
+    right: 6%;
     top: calc(24px + 38cqw);
     width: 24px;
     transform: none;
@@ -1553,7 +1553,7 @@ html.modal-open body {
 
   .work-modal__deco--big {
     left: 2%;
-    top: calc(24px + 74cqw);
+    top: calc(24px + 70cqw);
     bottom: auto;
     width: 10%;
     animation: spin-45 24s infinite;
