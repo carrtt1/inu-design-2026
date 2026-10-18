@@ -1528,21 +1528,43 @@ html.modal-open body {
     align-items: stretch;
     gap: 24px;
     padding: 24px 20px 32px;
+    container-type: inline-size;
   }
   .work-modal__image {
     width: 70%;
     align-self: center;
   }
+
+  .work-modal__text,
+  .work-modal__box {
+    position: static;
+  }
+  .work-modal__desc {
+    position: relative;
+  }
   .work-modal__box .work-modal__arrow {
-    display: none;
+    display: block;
+    left: auto;
+    right: 4%;
+    top: calc(24px + 38cqw);
+    width: 24px;
+    transform: none;
   }
+
   .work-modal__deco--big {
+    left: 2%;
+    top: calc(24px + 74cqw);
+    bottom: auto;
     width: 10%;
+    animation: spin-45 24s infinite;
   }
+
+  .work-modal__deco--spiral,
   .work-modal__deco--small {
     display: none;
   }
 }
+
 /* 동명이인 선택 팝업 */
 .choice-popup {
   position: fixed;
@@ -1627,7 +1649,8 @@ html.modal-open body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spin-45 {
+  .spin-45,
+  .work-modal__deco--big {
     animation: none;
   }
 }
