@@ -4,6 +4,7 @@ import { IMAGES } from "../image.js";
 import arrowIcon from "../assets/thxsparr.svg";
 import spiral from "../assets/miniarraw.svg";
 import artwork from "../assets/artwork.svg";
+import bstar from "../assets/bstar.svg";
 import { Link } from "react-router-dom";
 import { gradKeyFor } from "../gradImages";
 
@@ -43,6 +44,7 @@ export default function WorkModal({ work, info, tab, onClose }) {
           <img src={artwork} alt="" className="work-modal__deco work-modal__deco--art" />
           <img src={tab.icon} alt="" className="work-modal__deco work-modal__deco--big" />
           <img src={tab.icon} alt="" className="work-modal__deco work-modal__deco--small spin-45" />
+          <img src={bstar} alt="" className="work-modal__deco work-modal__deco--bstar" />
 
           <div className="work-modal__image" />
 

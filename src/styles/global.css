@@ -1471,6 +1471,13 @@ html.modal-open body {
   width: 2.6%;
 }
 
+.work-modal__deco--bstar {
+  left: 89%;
+  top: 21%;
+  width: 8%;
+  rotate: 15deg;
+}
+
 .work-modal__image {
   position: relative;
   flex: none;
@@ -1560,7 +1567,8 @@ html.modal-open body {
   }
 
   .work-modal__deco--spiral,
-  .work-modal__deco--small {
+  .work-modal__deco--small,
+  .work-modal__deco--bstar {
     display: none;
   }
 }
