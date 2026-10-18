@@ -1566,17 +1566,6 @@ html.modal-open body {
   position: relative;
 }
 
-.work-modal__box .work-modal__arrow {
-  position: absolute;
-  left: -44px;
-  top: 50%;
-  width: 28px;
-  height: auto;
-  aspect-ratio: 47 / 36;
-  color: var(--bar-color);
-  transform: translateY(-50%);
-}
-
 .work-modal__desc {
   padding: 20px 22px;
   background: var(--box-color);
@@ -1642,14 +1631,6 @@ html.modal-open body {
   }
   .work-modal__desc {
     position: relative;
-  }
-  .work-modal__box .work-modal__arrow {
-    display: block;
-    left: auto;
-    right: 6%;
-    top: calc(24px + 38cqw);
-    width: 24px;
-    transform: none;
   }
 
   .work-modal__deco--big {

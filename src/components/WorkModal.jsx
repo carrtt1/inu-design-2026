@@ -136,7 +136,6 @@ export default function WorkModal({ work, info, tab, onClose }) {
 
           <div className="work-modal__text">
             <div className="work-modal__box">
-              <MaskIcon src={arrowIcon} className="work-modal__arrow" />
               <p className="work-modal__desc">
                 {info?.description ?? "작품 설명을 불러오는 중이에요."}
               </p>
