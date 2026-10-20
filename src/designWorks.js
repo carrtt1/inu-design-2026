@@ -1,4 +1,4 @@
-const allFiles = import.meta.glob("./assets/coverImgSmall/*.webp", {
+const allFiles = import.meta.glob("./assets/coverImg/*.jpg", {
   eager: true,
   import: "default",
 });
@@ -10,7 +10,7 @@ const RANGES = {
 };
 
 const ALL = Object.entries(allFiles).map(([path, src]) => {
-  const file = path.split("/").pop().replace(/\.webp$/i, "").normalize("NFC");
+  const file = path.split("/").pop().replace(/\.jpg$/i, "").normalize("NFC");
   const match = file.match(/^(\d+)_(.+)$/);
   return {
     id: file,

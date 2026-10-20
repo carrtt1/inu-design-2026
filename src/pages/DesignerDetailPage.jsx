@@ -169,10 +169,11 @@ export default function DesignerDetailPage() {
         )}
 
         <div className="profile__body">
-          <div className="profile__visual">
-            <img src={tab.finger} alt="" className="profile__finger" />
-            {photo && <img src={photo} alt={`${designer.name} 사진`} className="profile__photo" />}
-          </div>
+          {photo && (
+            <div className="profile__visual">
+              <img src={photo} alt={`${designer.name} 사진`} className="profile__photo" />
+            </div>
+          )}
 
           <div className="profile__info">
             <h1 className="profile__name">{designer.name}</h1>
