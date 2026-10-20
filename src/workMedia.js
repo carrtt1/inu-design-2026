@@ -1,4 +1,4 @@
-const files = import.meta.glob("./assets/product/{visual,video,product}/*/*", {
+const files = import.meta.glob("./assets/productSmall/{visual,video,product}/*/*", {
   eager: true,
   query: "?url",
   import: "default",

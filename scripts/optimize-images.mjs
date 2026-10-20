@@ -1,22 +1,40 @@
 import sharp from "sharp";
-import { readdir, mkdir } from "node:fs/promises";
+import { readdir, mkdir, copyFile } from "node:fs/promises";
 import path from "node:path";
 
 const [, , inDir = "src/assets/gradImg", outDir = "src/assets/gradImgSmall", width = "700"] =
   process.argv;
 
-await mkdir(outDir, { recursive: true });
+const IMG_RE = /\.(jpe?g|png|webp)\s*$/i;
+const COPY_RE = /\.(gif|mp4|webm|mov)\s*$/i;
+let count = 0;
 
-const files = (await readdir(inDir)).filter((f) => /\.(jpe?g|png|webp)\s*$/i.test(f));
+async function walk(src, dst) {
+  await mkdir(dst, { recursive: true });
+  for (const ent of await readdir(src, { withFileTypes: true })) {
+    const from = path.join(src, ent.name);
 
-for (const f of files) {
-  const out = path.join(outDir, f.trim().replace(/\.[^.]+$/, ".webp"));
-  await sharp(path.join(inDir, f))
-    .rotate()
-    .resize({ width: Number(width), withoutEnlargement: true })
-    .webp({ quality: 80 })
-    .toFile(out);
-  console.log("✓", f);
+    if (ent.isDirectory()) {
+      await walk(from, path.join(dst, ent.name));
+      continue;
+    }
+
+    const name = ent.name.trim();
+    if (IMG_RE.test(name)) {
+      await sharp(from)
+        .rotate()
+        .resize({ width: Number(width), withoutEnlargement: true })
+        .webp({ quality: 80 })
+        .toFile(path.join(dst, name.replace(/\.[^.]+$/, ".webp")));
+    } else if (COPY_RE.test(name)) {
+      await copyFile(from, path.join(dst, name));
+    } else {
+      continue;
+    }
+    count++;
+    console.log("✓", path.relative(inDir, from));
+  }
 }
 
-console.log(`\n${files.length}장 완료 → ${outDir}`);
+await walk(inDir, outDir);
+console.log(`\n${count}개 완료 → ${outDir}`);
