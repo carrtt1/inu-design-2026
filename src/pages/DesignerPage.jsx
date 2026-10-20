@@ -55,6 +55,7 @@ export default function DesignerPage() {
                         alt={d.name}
                         title={info?.title ? `${d.name} · ${info.title}` : d.name}
                         loading="lazy"
+                        decoding="async"
                       />
                     ) : (
                       <span className="designer-card__empty" title={d.name} />

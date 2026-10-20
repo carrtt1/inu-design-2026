@@ -1,7 +1,4 @@
-const allFiles = import.meta.glob("./assets/gradImg/*.*", {
-  eager: true,
-  import: "default",
-});
+const allFiles = import.meta.glob("./assets/gradImgSmall/*.*", { eager: true, import: "default" });
 
 const ENTRIES = [];
 
