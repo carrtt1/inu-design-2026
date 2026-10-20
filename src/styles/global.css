@@ -1020,7 +1020,7 @@ dd {
     width: 14px;
   }
   .design-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 3px;
     padding: 3px;
   }
@@ -1735,5 +1735,36 @@ html.modal-open body {
   .spin-45,
   .work-modal__deco--big {
     animation: none;
+  }
+}
+
+.profile__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  justify-self: end;
+}
+
+.profile__dot-arrow {
+  flex: none;
+  width: 17px;
+  height: auto;
+}
+
+.profile__links a {
+  border-bottom: 1px solid transparent;
+}
+.profile__links a:hover {
+  text-decoration: none;
+  border-bottom-color: currentColor;
+}
+
+@media (max-width: 767px) {
+  .profile__links a {
+    gap: 5px;
+  }
+  .profile__dot-arrow {
+    width: 12px;
   }
 }

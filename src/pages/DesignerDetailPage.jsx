@@ -189,7 +189,28 @@ export default function DesignerDetailPage() {
                     : `/design/${tab.id}`
                 }
               >
-                {designer.title} 바로가기
+                <span className="profile__work-title">{designer.title}</span>
+                <svg
+                  className="profile__dot-arrow"
+                  viewBox="0 0 20 12"
+                  aria-hidden="true"
+                >
+                  <line
+                    x1="0" y1="6" x2="13" y2="6"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeDasharray="2 3"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M12 1.5 L18.5 6 L12 10.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
               <span>{MAJOR_KO[designer.major]}</span>
             </div>

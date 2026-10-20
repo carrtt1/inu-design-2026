@@ -53,7 +53,7 @@ export default function DesignPage() {
 
   const works = WORKS[current.id] ?? [];
   const emptyPc = (5 - (works.length % 5)) % 5;
-  const emptyMo = (4 - (works.length % 4)) % 4;
+  const emptyMo = (3 - (works.length % 3)) % 3;
   const emptyCount = Math.max(emptyPc, emptyMo);
 
   return (
