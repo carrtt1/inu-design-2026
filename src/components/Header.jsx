@@ -3,6 +3,7 @@ import { MENU_ITEMS, SITE_TITLE } from "../content";
 import { IMAGES } from "../image.js";
 import MaskIcon from "./MaskIcon";
 import { Link } from "react-router-dom";
+import menuIcon from "../assets/menuIcon.svg";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -49,9 +50,7 @@ export default function Header() {
             <img src={IMAGES.barX} alt="" className="hamburger__close" />
           ) : (
             <>
-              <span />
-              <span />
-              <span />
+              <img src={menuIcon} alt="" className="hamburger__open" />
             </>
           )}
         </button>
